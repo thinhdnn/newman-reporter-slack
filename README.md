@@ -1,8 +1,8 @@
-# newman-reporter-slackmsg
+# newman-reporter-slacknotification
 
 Custom [Newman](https://github.com/postmanlabs/newman) reporter to send message to [Slack](https://slack.com/)
 
-<img src="https://github.com/jackcoded/newman-reporter-slackmsg/blob/master/testResults.png?raw=true" width="450"  height="550">
+<img src="https://github.com/thinhdnn/newman-reporter-slacknotification/blob/master/testResults.png?raw=true" width="450"  height="550">
 
 ## Before you get started
 - Install [Newman](https://github.com/postmanlabs/newman) ``` $ npm run i -g newman ```
@@ -12,7 +12,7 @@ or
 
 ## Installation
  ```CLI
- npm i -g newman-reporter-slackmsg
+ npm i -g newman-reporter-slacknotification
  ```
 
 ## Usage
