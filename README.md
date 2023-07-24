@@ -59,12 +59,11 @@ Option to use bearer token for slack bots for channel override
 **channel**
 Option to select channel or user receive the result
 
-**failuresChannel**
-Option to select channel or user to receive failures
+**onlyFailure**
+Option to send failure report only. Default: false
 
 **limitFailures**
 Option to limit the amount failures shown in slack
 
 **authorName**
-
 Option to define a custom author name for Slack's message. If not provided, “Newman Test” will be used.

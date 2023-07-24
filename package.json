@@ -1,6 +1,6 @@
 {
   "name": "newman-reporter-slacknotification",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "newman reporter to slack",
   "main": "index.js",
   "scripts": {
