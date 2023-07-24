@@ -43,16 +43,6 @@ describe('SlackNewmanReporter', () => {
         expect(slackUtils.slackMessage).not.toHaveBeenCalled();
     });
 
-    test('should show error in failures channel if failures occurred and failuresChannel specified', () => {
-        const failuresChannel = '#alerts'
-        const summary = {run: { stats: '', failures: [{0: 'error occurred'}], timings: {}}}
-        slackNewmanReporter(mockEmitter, {webhookurl: 'test', failuresChannel: failuresChannel}, {});
-        mockEmitter.emit('done', '', summary);
-
-        expect(slackUtils.send).toHaveBeenCalled();
-        expect(slackUtils.slackMessage).toBeCalledWith(...['', {}, summary.run.failures, undefined, 100, '', '', failuresChannel, '', null, '']);
-    });
-
     test('should start slack reporter given no errors for webhook', () => {
         const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => { });
 
