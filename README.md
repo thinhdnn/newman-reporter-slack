@@ -17,25 +17,25 @@ or
 
 ## Usage
 ```CLI
- newman run <collectionFile> -e <environmentFile> --suppress-exit-code -r slackmsg --reporter-slackmsg-webhookurl '<webhookurl>'
+ newman run <collectionFile> -e <environmentFile> --suppress-exit-code -r slacknotification --reporter-slacknotification-webhookurl '<webhookurl>'
 ```
 
 ## Usage with channel override bot
 ```CLI
- newman run <collectionFile> -e <environmentFile> --suppress-exit-code -r slackmsg --reporter-slackmsg-webhookurl '<https://slack.com/api/chat.postMessage>' --reporter-slackmsg-token '<bearer token>' --reporter-slackmsg-channel '<channel or userid>'
+ newman run <collectionFile> -e <environmentFile> --suppress-exit-code -r slacknotification --reporter-slacknotification-webhookurl '<https://slack.com/api/chat.postMessage>' --reporter-slacknotification-token '<bearer token>' --reporter-slacknotification-channel '<channel or userid>'
 ```
 
 ## Reporter Options Optionals
 ```
- --reporter-slackmsg-messageSize '<messageSize>' e.g 150
- --reporter-slackmsg-token '<bearer token>' e.g xoxb-XXXXXXXXXXXX-TTTTTTTTTTTTTT
- --reporter-slackmsg-channel '<channel>' e.g #general
- --reporter-slackmsg-failuresChannel '<channel>' e.g. #alerts
- --reporter-slackmsg-collection '<collectionName> e.g test.json
- --reporter-slackmsg-environment '<environmentName> e.g env.json
- --reporter-slackmsg-reportingurl '<URL> e.g https://127.0.1/index.html
- --reporter-slackmsg-limitFailures '<limitFailures>; e.g 5
- --reporter-slackmsg-authorName '<authorName>; e.g "Newman Test"
+ --reporter-slacknotification-messageSize '<messageSize>' e.g 150
+ --reporter-slacknotification-token '<bearer token>' e.g xoxb-XXXXXXXXXXXX-TTTTTTTTTTTTTT
+ --reporter-slacknotification-channel '<channel>' e.g #general
+ --reporter-slacknotification-failuresChannel '<channel>' e.g. #alerts
+ --reporter-slacknotification-collection '<collectionName> e.g test.json
+ --reporter-slacknotification-environment '<environmentName> e.g env.json
+ --reporter-slacknotification-reportingurl '<URL> e.g https://127.0.1/index.html
+ --reporter-slacknotification-limitFailures '<limitFailures>; e.g 5
+ --reporter-slacknotification-authorName '<authorName>; e.g "Newman Test"
 
 ```
 
