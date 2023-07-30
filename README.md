@@ -62,6 +62,10 @@ Option to select channel or user receive the result
 **onlyFailure**
 Option to send failure report only. Default: false
 
+**overFailures**
+Option to send failure report if number of failures over. Default: 0
+To use the option, you need set onlyFailure = true
+
 **limitFailures**
 Option to limit the amount failures shown in slack
 
