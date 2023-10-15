@@ -70,13 +70,7 @@ function SlackNewmanReporter (emitter, reporterOptions) {
       }
     } else {
       run.executions.forEach(execution => {
-        if (execution.assertions.length === 0) {
-          summaryExecutions.push({
-            title: `${execution.title} : Skipped`,
-            short: 'skipped'
-          })
-        } else {
-          //console.log(execution.assertions);
+        if (execution.assertions !== undefined) {
           execution.assertions.forEach(assertion => {
             console.log(assertion)
             const assertionText = assertion.assertion
@@ -91,7 +85,7 @@ function SlackNewmanReporter (emitter, reporterOptions) {
                 short: 'true'
               })
             }
-          })
+          });
         }
       })
 
