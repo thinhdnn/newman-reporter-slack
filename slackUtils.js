@@ -5,7 +5,7 @@ var jsonminify = require("jsonminify");
 let messageSize;
 
 // creates message for slack
-function slackMessage(stats, timings, failures, executions, maxMessageSize, collection, environment, channel, reportingUrl, limitFailures, authorName) {
+function slackMessage(stats, timings, failures, allExecutions, executions,  summaryExecutions, maxMessageSize, collection, environment, channel, reportingUrl, limitFailures, authorName) {
     messageSize = maxMessageSize;
     let parsedFailures = parseFailures(failures);
     let skipCount = getSkipCount(executions);
@@ -31,6 +31,20 @@ function slackMessage(stats, timings, failures, executions, maxMessageSize, coll
             "color": "#008000",
             "author_name": "${author}",
             "title": ":white_check_mark: All Passed :white_check_mark:",
+            "footer": "Newman Test",
+            "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png"
+        }
+    ]`
+    let summaryMessage = `
+    "attachments": [
+        {
+            "mrkdwn_in": ["text"],
+            "color": "#008000",
+            "author_name": "${author}",
+            "title": "All Executions Summary",
+            "fields": [
+                ${allExecutions ? sumMessage(summaryExecutions) : ''}
+            ],
             "footer": "Newman Test",
             "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png"
         }
@@ -116,7 +130,7 @@ function slackMessage(stats, timings, failures, executions, maxMessageSize, coll
                 "type": "divider"
             }
         ],
-        ${failures.length > 0 ? failureMessage : successMessage}
+        ${allExecutions ? summaryMessage : failures.length > 0 ? failureMessage : successMessage}
        }`);
 }
 
@@ -199,6 +213,16 @@ function failMessage(parsedFailures) {
             "short": false
         },
         ${failErrors(failure.tests)}`;
+    }).join();
+}
+
+function sumMessage(sumExecutions) {
+    return sumExecutions.map((exec) => {
+        return `
+        {
+            "title": "${exec.title}",
+            "short": false
+        }`
     }).join();
 }
 
