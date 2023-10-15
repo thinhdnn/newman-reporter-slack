@@ -124,7 +124,7 @@ describe('slackUtils', () => {
         ];
 
         test('should return good result', () => {
-            const result = slackUtils.slackMessage(mockPassStats, mockTimings, [], mockExecutions, 100, '', '', '#general');
+            const result = slackUtils.slackMessage(mockPassStats, mockTimings, [], mockExecutions, false, null, 100, '', '', '#general');
 
             const duration = prettyms(mockTimings.completed - mockTimings.started)
             // should include channel name if given for channel override
@@ -144,19 +144,19 @@ describe('slackUtils', () => {
         test('should return message with collection and environment', () => {
             const collectionFileName = 'testCollection'
             const environmentFileName = 'testEnvironment';
-            const result = slackUtils.slackMessage(mockFailStats, mockTimings, [], mockExecutions, 100, collectionFileName, environmentFileName);
+            const result = slackUtils.slackMessage(mockFailStats, mockTimings, [], mockExecutions, false, null, 100, collectionFileName, environmentFileName);
 
             expect(result).toContain(`{"type":"mrkdwn","text":"Collection: ${collectionFileName} \\n Environment: ${environmentFileName}"}}`)
         });
 
         test('should return message truncate by message size', () => {
-            const result = slackUtils.slackMessage(mockFailStats, mockTimings, mockFail, mockExecutions, 106);
+            const result = slackUtils.slackMessage(mockFailStats, mockTimings, mockFail, mockExecutions, false, null, 106);
 
             expect(result).toContain(`Expected - response to have status code 500 but got 200 test more than 100 characters blah blah blah blah ...`);
         });
 
         test('should return failure result', () => {
-            const result = slackUtils.slackMessage(mockFailStats, mockTimings, mockFail, [], 100);
+            const result = slackUtils.slackMessage(mockFailStats, mockTimings, mockFail, [], false, null, 100);
             const duration = prettyms(mockTimings.completed - mockTimings.started)
             
             expect(result).toContain(`Newman Test`);
@@ -181,7 +181,7 @@ describe('slackUtils', () => {
         });
 
         test('should contain custom author name when success', () => {
-            const result = slackUtils.slackMessage(mockPassStats, mockTimings, [], mockExecutions, 100, '', '', '#general', '', null, 'John Doe');
+            const result = slackUtils.slackMessage(mockPassStats, mockTimings, [], mockExecutions, false, null, 100, '', '', '#general', '', null, 'John Doe');
 
             // should include channel name if given for channel override
             expect(result).toContain(`"channel":"#general"`);
@@ -190,7 +190,7 @@ describe('slackUtils', () => {
         });
 
         test('should contain custom author name when failed', () => {
-            const result = slackUtils.slackMessage(mockFailStats, mockTimings, mockFail, [], 100, '', '', '#general', '', null, 'John Doe');
+            const result = slackUtils.slackMessage(mockFailStats, mockTimings, mockFail, [], false, null, 100, '', '', '#general', '', null, 'John Doe');
 
             // changed author
             expect(result).toContain(`John Doe`);

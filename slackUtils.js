@@ -5,7 +5,7 @@ var jsonminify = require("jsonminify");
 let messageSize;
 
 // creates message for slack
-function slackMessage(stats, timings, failures, allExecutions, executions,  summaryExecutions, maxMessageSize, collection, environment, channel, reportingUrl, limitFailures, authorName) {
+function slackMessage(stats, timings, failures, executions, allExecutions, summaryExecutions, maxMessageSize, collection, environment, channel, reportingUrl, limitFailures, authorName) {
     messageSize = maxMessageSize;
     let parsedFailures = parseFailures(failures);
     let skipCount = getSkipCount(executions);

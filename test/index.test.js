@@ -72,7 +72,7 @@ describe('SlackNewmanReporter', () => {
         mockEmitter.emit('done', '', summary);
 
         expect(slackUtils.send).toHaveBeenCalled();
-        expect(slackUtils.slackMessage).toBeCalledWith(...['', {}, summary.run.failures, undefined, 100, '', '', '', '', null, 'John Doe']);
+        expect(slackUtils.slackMessage).toBeCalledWith(...['', {}, summary.run.failures, undefined, false, null, 100, '', '', '', '', null, 'John Doe']);
         expect(consoleErrorSpy).not.toHaveBeenCalled();
     });
 

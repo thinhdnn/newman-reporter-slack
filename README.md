@@ -36,6 +36,9 @@ or
  --reporter-slacknotification-reportingurl '<URL> e.g https://127.0.1/index.html
  --reporter-slacknotification-limitFailures '<limitFailures>; e.g 5
  --reporter-slacknotification-authorName '<authorName>; e.g "Newman Test"
+ --reporter-slacknotification-onlyFailure   true|false
+ --reporter-slacknotification-overFailures  failure threshold e.g 10
+ --reporter-slacknotification-allExecutions true|false
 
 ```
 
@@ -65,6 +68,9 @@ Option to send failure report only. Default: false
 **overFailures**
 Option to send failure report if number of failures over. Default: 0
 To use the option, you need set onlyFailure = true
+
+**allExecutions**
+To use the option, you need set allExecutions = true
 
 **limitFailures**
 Option to limit the amount failures shown in slack

@@ -117,3 +117,4 @@ dist
 
 # html file
 *.html
+package-lock.json
